@@ -72,7 +72,6 @@ src/
 ├── store/            # Redux store and slices
 │   ├── Slices/       # Redux slices
 │   └── store.js      # Redux store configuration
-├── services/         # API and external services
 └── App.jsx           # Main App component
 ```
 
