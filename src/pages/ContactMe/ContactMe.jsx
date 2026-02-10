@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
-import { FaEnvelope, FaPhone, FaLinkedin, FaFacebook, FaGithub, FaWhatsapp } from 'react-icons/fa';
-import './ContactMe.css';
+import React, { useState } from "react";
+import {
+  FaEnvelope,
+  FaPhone,
+  FaLinkedin,
+  FaFacebook,
+  FaGithub,
+  FaWhatsapp,
+} from "react-icons/fa";
+import "./ContactMe.css";
 
 function ContactMe() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,23 +22,23 @@ function ContactMe() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
-      console.log('Form submitted:', formData);
+      console.log("Form submitted:", formData);
       setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+
       // Reset status after 5 seconds
       setTimeout(() => setSubmitStatus(null), 5000);
     }, 1500);
@@ -46,23 +53,27 @@ function ContactMe() {
             Get In Touch
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Have questions or feedback? We'd love to hear from you. Fill out the form below or reach out through our social media channels.
+            Have questions or feedback? We'd love to hear from you. Fill out the
+            form below or reach out through our social media channels.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div className="bg-gray-800 rounded-xl p-8 shadow-2xl">
-            {submitStatus === 'success' ? (
+            {submitStatus === "success" ? (
               <div className="bg-green-900/50 border border-green-500 text-green-200 px-6 py-4 rounded-lg mb-6">
                 Thank you for your message! We'll get back to you soon.
               </div>
             ) : null}
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-300 mb-1"
+                  >
                     Your Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -76,9 +87,12 @@ function ContactMe() {
                     placeholder=""
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-300 mb-1"
+                  >
                     Email Address <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -93,9 +107,12 @@ function ContactMe() {
                   />
                 </div>
               </div>
-              
+
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-1">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-gray-300 mb-1"
+                >
                   Subject <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -109,9 +126,12 @@ function ContactMe() {
                   placeholder="How can i help?"
                 />
               </div>
-              
+
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-300 mb-1"
+                >
                   Your Message <span className="text-red-500">*</span>
                 </label>
                 <textarea
@@ -125,7 +145,7 @@ function ContactMe() {
                   placeholder="Type your message here..."
                 ></textarea>
               </div>
-              
+
               <div className="pt-2">
                 <button
                   type="submit"
@@ -134,25 +154,43 @@ function ContactMe() {
                 >
                   {isSubmitting ? (
                     <span className="flex items-center justify-center">
-                      <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      <svg
+                        className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
                       </svg>
                       Sending...
                     </span>
-                  ) : 'Send Message'}
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
               </div>
             </form>
           </div>
-          
+
           {/* Contact Information */}
           <div className="space-y-8">
             <div className="bg-gray-800 rounded-xl p-8 h-full shadow-2xl">
               <h2 className="text-2xl font-bold mb-8 bg-gradient-to-r from-red-600 to-pink-500 bg-clip-text text-transparent">
                 Contact Information
               </h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="flex-shrink-0 bg-red-600/20 p-3 rounded-lg">
@@ -160,60 +198,65 @@ function ContactMe() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold text-white">Email</h3>
-                    <p className="text-gray-400 mt-1">mahmoudazaab034@gmail.com</p>
+                    <p className="text-gray-400 mt-1">
+                      mahmoudazaab034@gmail.com
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start pt-6">
                   <div className="flex-shrink-0 bg-red-600/20 p-3 rounded-lg">
                     <FaPhone className="text-red-500 text-xl" />
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-semibold text-white">Call Me</h3>
+                    <h3 className="text-lg font-semibold text-white">
+                      Call Me
+                    </h3>
                     <p className="text-gray-400 mt-1">01006488707</p>
                   </div>
                 </div>
-                
+
                 <div className="pt-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">Follow Me</h3>
+                  <h3 className="text-lg font-semibold text-white mb-4">
+                    Follow Me
+                  </h3>
                   <div className="flex space-x-4">
-                    <a 
-                      href="https://www.facebook.com/share/17atffXYPx/" 
-                      target="_blank" 
+                    <a
+                      href="https://www.facebook.com/share/17atffXYPx/"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition-colors duration-200"
                       aria-label="Facebook"
                     >
-                      <FaFacebook className="text-lg"/>
+                      <FaFacebook className="text-lg" />
                     </a>
-                    <a 
-                      href="https://github.com/mahmoud3zb" 
-                      target="_blank" 
+                    <a
+                      href="https://github.com/mahmoud3zb"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition-colors duration-200"
                       aria-label="GitHub"
                     >
                       <FaGithub className="text-lg" />
                     </a>
-                    <a 
-                      href="https://wa.me/201006488707" 
-                      target="_blank" 
+                    <a
+                      href="https://wa.me/201006488707"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition-colors duration-200"
                       aria-label="WhatsApp"
                     >
                       <FaWhatsapp className="text-lg" />
                     </a>
-                    <a 
-                      href="https://www.linkedin.com/in/mahmoud-3zb" 
-                      target="_blank" 
+                    <a
+                      href="https://www.linkedin.com/in/mahmoud-3zb"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition-colors duration-200"
                       aria-label="LinkedIn"
                     >
                       <FaLinkedin className="text-lg" />
                     </a>
-                    
                   </div>
                 </div>
               </div>
