@@ -1,43 +1,4 @@
-// import { createSlice } from '@reduxjs/toolkit';
 
-// const initialState = {
-//   movies: [],
-//   loading: false,
-//   error: null,
-//   currentMovie: null,
-//   searchQuery: ''
-// };
-
-// const movieSlice = createSlice({
-//   name: 'movies',
-//   initialState,
-//   reducers: {
-//     setMovies: (state, action) => {
-//       state.movies = action.payload;
-//       state.loading = false;
-//     },
-//     setLoading: (state, action) => {
-//       state.loading = action.payload;
-//     },
-//     setError: (state, action) => {
-//       state.error = action.payload;
-//       state.loading = false;
-//     },
-//     setCurrentMovie: (state, action) => {
-//       state.currentMovie = action.payload;
-//     },
-//     setSearchQuery: (state, action) => {
-//       state.searchQuery = action.payload;
-//     }
-//   }
-// });
-
-// export const { setMovies, setLoading, setError, setCurrentMovie, setSearchQuery } = movieSlice.actions;
-// export default movieSlice.reducer;
-
-
-
-// src/store/Slices/movieSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Replace this with your actual API endpoint
