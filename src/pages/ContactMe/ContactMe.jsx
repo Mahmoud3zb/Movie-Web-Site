@@ -1,19 +1,41 @@
-import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { useRef, useState } from "react";
 import {
   FaEnvelope,
-  FaPhone,
-  FaLinkedin,
   FaFacebook,
   FaGithub,
+  FaLinkedin,
+  FaPhone,
   FaWhatsapp,
 } from "react-icons/fa";
 import "./ContactMe.css";
 
 function ContactMe() {
+  // emailjs
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("service_m97rj0f", 
+        "template_tek7so8", 
+        form.current, {
+        publicKey: "1jo4EAG79nnoaIpr9",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        },
+      );
+  };
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
     message: "",
   });
 
@@ -28,21 +50,21 @@ function ContactMe() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+  //   // Simulate form submission
+  //   setTimeout(() => {
+  //     console.log("Form submitted:", formData);
+  //     setIsSubmitting(false);
+  //     setSubmitStatus("success");
+  //     setFormData({ name: "", email: "", message: "" });
 
-      // Reset status after 5 seconds
-      setTimeout(() => setSubmitStatus(null), 5000);
-    }, 1500);
-  };
+  //     // Reset status after 5 seconds
+  //     setTimeout(() => setSubmitStatus(null), 5000);
+  //   }, 1500);
+  // };
 
   return (
     <div className="contact-page min-h-screen bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8">
@@ -67,7 +89,7 @@ function ContactMe() {
               </div>
             ) : null}
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -103,28 +125,8 @@ function ContactMe() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                    placeholder="you@example.com"
                   />
                 </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-300 mb-1"
-                >
-                  Subject <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                  placeholder="How can i help?"
-                />
               </div>
 
               <div>
