@@ -1,10 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  FaEnvelope,
+  FaFilm,
+  FaHeart,
+  FaHome,
+  FaTimes
+} from "react-icons/fa";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { FaFilm, FaHeart, FaEnvelope, FaHome, FaTimes } from "react-icons/fa";
+
+
+
+
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+
+  const { theme } = useSelector((state) => state.settings);
+
+  // Set initial theme on component mount
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -36,7 +57,7 @@ function Navbar() {
           </div>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-4">
             <div className="ml-10 flex items-center space-x-4">
               <NavLink
                 to="/"
@@ -71,6 +92,10 @@ function Navbar() {
                 <span>Contact</span>
               </NavLink>
             </div>
+
+            
+
+            
           </div>
 
           {/* Mobile menu button */}
