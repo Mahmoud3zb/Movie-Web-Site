@@ -14,13 +14,26 @@ function ContactMe() {
   // emailjs
   const form = useRef();
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
   const sendEmail = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate form submission
+    setTimeout(() => {
+      console.log("Form submitted:", formData);
+      setIsSubmitting(false);
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+
+      // Reset status after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    }, 1500);
 
     emailjs
-      .sendForm("service_m97rj0f", 
-        "template_tek7so8", 
-        form.current, {
+      .sendForm("service_m97rj0f", "template_tek7so8", form.current, {
         publicKey: "1jo4EAG79nnoaIpr9",
       })
       .then(
@@ -39,9 +52,6 @@ function ContactMe() {
     message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -51,19 +61,7 @@ function ContactMe() {
   };
 
   // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setIsSubmitting(true);
 
-  //   // Simulate form submission
-  //   setTimeout(() => {
-  //     console.log("Form submitted:", formData);
-  //     setIsSubmitting(false);
-  //     setSubmitStatus("success");
-  //     setFormData({ name: "", email: "", message: "" });
-
-  //     // Reset status after 5 seconds
-  //     setTimeout(() => setSubmitStatus(null), 5000);
-  //   }, 1500);
   // };
 
   return (

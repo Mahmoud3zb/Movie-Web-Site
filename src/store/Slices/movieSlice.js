@@ -1,9 +1,8 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// Replace this with your actual API endpoint
 const API_URL = 'https://api.themoviedb.org/3';
-const API_KEY = '1d6fc6f436488fb9cad1ee6440edd309'; // Replace with your actual API key
+const API_KEY = '1d6fc6f436488fb9cad1ee6440edd309'; 
 
 export const fetchMovies = createAsyncThunk(
   'movies/fetchAll',
@@ -58,7 +57,7 @@ const movieSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    // Fetch Movies
+    
     builder
       .addCase(fetchMovies.pending, (state) => {
         state.loading = true;
@@ -73,7 +72,7 @@ const movieSlice = createSlice({
         state.error = action.payload;
       })
 
-    // Fetch Movie Details
+
       .addCase(fetchMovieDetails.pending, (state) => {
         state.loading = true;
         state.error = null;

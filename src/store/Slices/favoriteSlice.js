@@ -1,9 +1,7 @@
 
-
-// src/store/Slices/favoriteSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// In favoriteSlice.js
+
 export const loadFavorites = createAsyncThunk(
   'favorites/load',
   async () => {

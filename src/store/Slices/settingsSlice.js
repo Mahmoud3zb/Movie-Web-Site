@@ -1,7 +1,6 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// Helper function to get initial theme
 const getInitialTheme = () => {
   if (typeof window !== 'undefined') {
     const savedTheme = localStorage.getItem("theme");

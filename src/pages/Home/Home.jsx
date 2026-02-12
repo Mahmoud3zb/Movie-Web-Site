@@ -55,7 +55,7 @@ function Home() {
   };
 
   return (
-    <div className="home">
+    <div className="bg-gradient-to-r from-black to-gray-900 home">
       {/* Hero Section with Featured Movie */}
       <div className="hero" style={{
         backgroundImage: `url(${featured ? `https://image.tmdb.org/t/p/original${featured.backdrop_path}` : ''})`,

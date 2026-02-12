@@ -22,7 +22,7 @@ const store = configureStore({
     }),
 });
 
-// Initialize settings when store is created
+
 store.dispatch(initializeSettings());
 store.dispatch(loadFavorites());
 

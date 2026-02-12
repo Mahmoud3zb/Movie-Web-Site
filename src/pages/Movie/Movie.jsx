@@ -53,7 +53,7 @@ function Movie() {
   };
 
   return (
-    <div className="movie-page bg-gray-900 min-h-screen pt-20 pb-10 px-4 sm:px-6 lg:px-8">
+    <div className="bg-gradient-to-r from-black to-gray-900 movie-page bg-gray-900 min-h-screen pt-20 pb-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
