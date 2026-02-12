@@ -7,7 +7,8 @@ import Home from "./pages/Home/Home";
 import Movie from "./pages/Movie/Movie";
 import MovieDetails from "./pages/MovieDetails/MovieDetails";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
   {
     path: "/",
     element: <Layout />,
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
     path: "*",
     element: <ErrorPage />,
   },
-]);
+],
+{
+  basename: "/Society-Movies",
+}
+
+);
 
 export default router;
